@@ -1,32 +1,18 @@
 # **5-Stage Pipelined RISC-V Processor**
 
----
+This project implements a complete 5-stage pipelined RISC-V processor in Verilog, demonstrating fundamental computer architecture concepts through a working CPU design.
 
-## **🏗️ Architecture Overview**
+## **🏗️ Architecture**
 - **5-Stage Pipeline**: IF (Instruction Fetch) → ID (Instruction Decode) → EX (Execute) → MEM (Memory Access) → WB (Write Back)
-- **Dual-Phase Clocking**: Separate clocks for odd/even pipeline stages  
+- **Dual-Phase Clocking**: Separate clocks for odd/even pipeline stages
 - **32-bit RISC Architecture**: 32-bit data path and instructions
 
----
-
-## **📋 Supported Instruction Set**
-
-### **Arithmetic Instructions**
-- **ADD, SUB, AND, OR, SLT, MUL**
-
-### **Immediate Operations**
-- **ADDI, SUBI, ANDI, ORI, SLTI**
-
-### **Memory Access**
-- **LW** (Load Word), **SW** (Store Word)
-
-### **Control Flow**
-- **BEQZ** (Branch if Zero), **BNEQZ** (Branch if Not Zero)
-
-### **System Instructions**
-- **HLT** (Halt)
-
----
+## **📋 Supported Instructions**
+- **Arithmetic**: ADD, SUB, AND, OR, SLT, MUL
+- **Immediate Operations**: ADDI, SUBI, ANDI, ORI, SLTI
+- **Memory Access**: LW (Load Word), SW (Store Word)
+- **Control Flow**: BEQZ (Branch if Zero), BNEQZ (Branch if Not Zero)
+- **System**: HLT (Halt)
 
 ## **🎯 Key Features**
 - **Pipelined Execution**: Multiple instructions processed simultaneously
@@ -35,52 +21,9 @@
 - **Hazard Handling**: Branch prediction and data forwarding
 - **Instruction Types**: RR (Register-Register), RM (Register-Immediate), Load/Store, Branch
 
----
-
 ## **🔧 Pipeline Stages**
-
-### **1. Instruction Fetch (IF)**
-- Fetches instructions from memory
-- Handles branch prediction
-- Manages program counter
-
-### **2. Instruction Decode (ID)**
-- Decodes instruction opcode
-- Reads register values
-- Sign-extends immediate values
-
-### **3. Execute (EX)**
-- Performs ALU operations
-- Calculates memory addresses
-- Evaluates branch conditions
-
-### **4. Memory Access (MEM)**
-- Reads/writes data memory
-- Handles load/store operations
-
-### **5. Write Back (WB)**
-- Writes results to registers
-- Updates processor state
-
----
-
-## **📁 Project Files**
-- **RISC_V.v** - Main processor implementation
-- **Testbench** - Verification and testing
-
----
-
-## **🚀 Simulation**
-The design can be simulated using Verilog simulators like:
-- **ModelSim**
-- **Icarus Verilog** 
-- **VCS**
-
----
-
-## **🛠️ Usage**
-```verilog
-module top;
-  wire clk1, clk2;
-  pipe_MIPS processor (.clk1(clk1), .clk2(clk2));
-endmodule
+1. **IF**: Fetches instructions from memory, handles branches
+2. **ID**: Decodes instructions, reads registers, sign-extends immediates
+3. **EX**: Performs ALU operations, calculates addresses
+4. **MEM**: Reads/writes data memory
+5. **WB**: Writes results back to register file
